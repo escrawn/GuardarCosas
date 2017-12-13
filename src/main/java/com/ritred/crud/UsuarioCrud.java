@@ -1,7 +1,10 @@
 package com.ritred.crud;
 
+import java.util.List;
+
 import org.hibernate.Session;
 
+import com.ritred.dao.Relatos;
 import com.ritred.dao.Usuario;
 
 public class UsuarioCrud extends MainCrud {
@@ -65,6 +68,21 @@ public class UsuarioCrud extends MainCrud {
 		session.update(antiguo);
 		session.getTransaction().commit();
 		session.close();
+
+	}
+
+	protected List<Relatos> getRelatosUsuario(Usuario usuario) {
+
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Usuario usBD = this.readById(usuario.getPkUsuario());
+		List<Relatos> relatos = usBD.getRelatos();
+
+		session.getTransaction().commit();
+		session.close();
+
+		return relatos;
 
 	}
 

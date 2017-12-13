@@ -1,24 +1,29 @@
 package com.ritred.crud;
 
+import com.ritred.dao.Capitulos;
 import com.ritred.dao.Relatos;
-import com.ritred.dao.Usuario;
 
 public class PruebasCrud {
 
 	public static void main(String[] args) {
 
+		CapitulosCrud cc = new CapitulosCrud();
 		RelatosCrud rc = new RelatosCrud();
-		UsuarioCrud uc = new UsuarioCrud();
 
-		uc.setup();
+		cc.setup();
 		rc.setup();
-
-		Usuario enganchado = uc.readById(7);
 
 		Relatos r = rc.getRelatoById(1);
 
-		rc.addEnganchado(r, enganchado);
+		Capitulos capitulo = new Capitulos();
+		capitulo.setListaCap("rutaALista");
+		capitulo.setTitulo("TituloCapitulo");
+
+		capitulo.setRelato(r);
+
+		rc.addCapitulo(r, capitulo);
+
 		rc.exit();
-		uc.exit();
+		cc.exit();
 	}
 }

@@ -1,13 +1,13 @@
-package com.ritred.ritred;
+package com.ritred.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ControladorHola {
+public class ControladorAdmin {
 
-	@RequestMapping("/")
+	@RequestMapping("/admin")
 	public String home() {
-		return "prueba.html";
+		return "admin";
 	}
 }

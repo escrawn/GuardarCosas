@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "relatos")
@@ -43,11 +48,23 @@ public class Relatos {
 	@JoinTable(name = "relatos_has_enganchados", joinColumns = {
 			@JoinColumn(name = "Relatos_pkRelatos", referencedColumnName = "pkRelatos", nullable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "usuario_pkEnganchado", referencedColumnName = "pkUsuario", nullable = false) })
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	private List<Usuario> enganchados;
+
+	@OneToMany(mappedBy = "relato", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Capitulos> capitulos;
 
 	public Relatos() {
 
+	}
+
+	public List<Capitulos> getCapitulos() {
+		return capitulos;
+	}
+
+	public void setCapitulos(List<Capitulos> capitulos) {
+		this.capitulos = capitulos;
 	}
 
 	public int getPkRelatos() {

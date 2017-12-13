@@ -1,8 +1,11 @@
 package com.ritred.crud;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
+import com.ritred.dao.Capitulos;
 import com.ritred.dao.Relatos;
 import com.ritred.dao.Usuario;
 
@@ -57,6 +60,24 @@ public class RelatosCrud extends MainCrud {
 		session.update(antiguo);
 		session.getTransaction().commit();
 		session.close();
+
+	}
+
+	protected void addCapitulo(Relatos relato, Capitulos capitulo) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Relatos relatoBD = getRelatoById(relato.getPkRelato());
+		Relatos aux = null;
+		aux = relatoBD;
+
+		List<Capitulos> capitulos = relatoBD.getCapitulos();
+		capitulos.add(capitulo);
+
+		session.getTransaction().commit();
+		session.close();
+
+		updateRelato(relato, aux);
 
 	}
 }
