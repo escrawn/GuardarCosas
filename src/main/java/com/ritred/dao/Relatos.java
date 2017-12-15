@@ -22,7 +22,7 @@ import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "relatos")
-public class Relatos {
+public class Relatos implements Comparable<Relatos>{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -153,6 +153,11 @@ public class Relatos {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	@Override
+	public int compareTo(Relatos r) {
+		return this.getFechaCreacion().compareTo(r.getFechaCreacion());
 	}
 
 }

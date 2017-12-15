@@ -17,9 +17,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests().antMatchers("/", "/index", "/registro").permitAll()
-				.antMatchers("/admin").hasAnyRole("USUARIO").antMatchers("/user/**").hasAnyRole("USER").anyRequest()
-				.authenticated().and().formLogin().loginPage("/login").permitAll().and().logout().permitAll().and()
-				.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+				.antMatchers("/admin").hasAnyRole("USUARIO").antMatchers("/user/*").hasAnyRole("ADMINISTRADOR")
+				.antMatchers("/user/**/relato/*").hasAnyRole("ADMINISTRADOR").anyRequest().authenticated().and()
+				.formLogin().loginPage("/login").permitAll().and().logout().permitAll().and().exceptionHandling()
+				.accessDeniedHandler(accessDeniedHandler);
 	}
 
 	@Override

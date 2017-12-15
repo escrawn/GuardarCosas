@@ -1,0 +1,27 @@
+.novedad{
+    border-style: solid;
+    border-color: black;
+border-width: 1px;
+    border-radius: 7%;
+    min-height: 200px;
+    max-width: 300px;
+max-height: 400px;
+    overflow: hidden;
+}
+
+.titulo{
+    text-align: center;
+
+    border-bottom: 3px solid black;
+
+}
+
+.novedad span{
+    color: #A8A8A8;
+
+}
+
+.novedad:hover{
+    box-shadow: 0 0 11px red;
+    cursor:pointer;
+}

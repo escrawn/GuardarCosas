@@ -1,0 +1,31 @@
+h6{
+    color: #FF7400;
+    font-weight: bold;
+
+}
+
+.blockFooter{
+
+   border-right: 2px;
+
+    border-color: red;
+    border-width: 2px;
+}
+
+.blockFooter p{
+    color:white;
+    font-weight: bold;
+}
+
+.blockFooter a{
+    color: white;
+}
+
+hr{
+    border-color: orange;
+    border-bottom:100px;
+
+
+}
+
+
