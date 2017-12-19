@@ -1,9 +1,16 @@
 <html>
 <head>
   <meta charset="UTF-8"/>
+  <link rel="import" href="StyleSettings.html">
 </head>
 <body>
 <h1>Hola mundo</h1>
 <a href = "/login">Ir al login</a>
+
+<link rel="import" href="Fragments/novedades.html">
+
+<div th:each="relato : ${relatos}">
+  <h3 th:text="${relato.titulo}"></h3>
+</div>
 </body>
 </html>

@@ -13,12 +13,12 @@ import org.hibernate.service.ServiceRegistry;
 
 public class MainCrud {
 
-	protected SessionFactory sessionFactory;
+	protected  SessionFactory sessionFactory;
 
 	/**
 	 * Configura la conexion con la base de datos.
 	 */
-	protected void setup() {
+	protected  void setup() {
 	        try {
 	            // Create the SessionFactory from hibernate.cfg.xml
 	            sessionFactory = new Configuration().configure("hibernate.cfg.xml")

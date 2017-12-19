@@ -1,9 +1,8 @@
 package com.ritred.crud;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
+
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -14,14 +13,16 @@ import com.ritred.dao.Relatos;
 import com.ritred.dao.Usuario;
 
 @Component
-public class RelatosCrud extends MainCrud {
+public class RelatosCrud extends MainCrud{
 
     public RelatosCrud() {
 
     }
 
+
     protected void createRelatos(Relatos relato) {
 
+        this.setup();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -29,10 +30,13 @@ public class RelatosCrud extends MainCrud {
 
         session.getTransaction().commit();
         session.close();
+
+        this.exit();
     }
 
     protected Relatos getRelatoById(int pk) {
 
+        this.setup();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -40,22 +44,22 @@ public class RelatosCrud extends MainCrud {
 
         session.getTransaction().commit();
         session.close();
-
+        this.exit();
         return r;
 
     }
 
     protected void addEnganchado(Relatos r, Usuario enganchado) {
-
+        this.setup();
         Relatos rsAnt = getRelatoById(r.getPkRelato());
         rsAnt.getEnganchados().add(enganchado);
 
         updateRelato(rsAnt, rsAnt);
-
+        this.exit();
     }
 
     protected void updateRelato(Relatos antiguo, Relatos nuevo) {
-
+        this.setup();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -64,10 +68,11 @@ public class RelatosCrud extends MainCrud {
         session.update(antiguo);
         session.getTransaction().commit();
         session.close();
-
+        this.exit();
     }
 
     protected void addCapitulo(Relatos relato, Capitulos capitulo) {
+        this.setup();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -82,10 +87,11 @@ public class RelatosCrud extends MainCrud {
         session.close();
 
         updateRelato(relato, aux);
-
+        this.exit();
     }
 
     protected List<Relatos> getRelatos() {
+        this.setup();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -95,25 +101,18 @@ public class RelatosCrud extends MainCrud {
         session.getTransaction().commit();
         session.close();
 
+        this.exit();
         return relatos;
     }
 
-    protected List<Relatos> getNovedadesRelatos() {
-        List<Relatos> relatos = getRelatos();
-        Relatos masNuevo;
+    public List<Relatos> getNovedadesRelatos() {
+        this.setup();
+        List<Relatos> novedades = getRelatos();
+        Collections.sort(novedades);
 
-        Relatos primero = relatos.get(0);
-
-        List<Relatos> novedades = new ArrayList<>();
-
-        for (int i = 0; i < relatos.size(); i++) {
-            if (relatos.get(i).getFechaCreacion().after(relatos.get(i + 1).getFechaCreacion())) {
-                if(relatos.size()>4) {
-                    Collections.sort(relatos);
-                }
-            }
-
-        }
-        return null;
+        this.exit();
+        return novedades;
     }
+
+
 }
