@@ -1,16 +1,20 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8"/>
-  <link rel="import" href="StyleSettings.html">
+    <meta charset="UTF-8">
+
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.0.2/web-fonts-with-css/css/fontawesome-all.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+
 </head>
 <body>
-<h1>Hola mundo</h1>
-<a href = "/login">Ir al login</a>
 
-<link rel="import" href="Fragments/novedades.html">
 
-<div th:each="relato : ${relatos}">
-  <h3 th:text="${relato.titulo}"></h3>
-</div>
+<nav th:replace="Fragments/menu :: menuFrag"></nav>
+<div class="fotoPortada"></div>
+
+<div th:replace="Fragments/novedades :: novFrag"></div>
 </body>
 </html>

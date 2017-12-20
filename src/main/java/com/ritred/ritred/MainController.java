@@ -19,6 +19,7 @@ public class MainController {
         List<Relatos> novedades = rc.getNovedadesRelatos();
 
         mav.addObject("relatos", novedades);
+
         return mav;
     }
 
