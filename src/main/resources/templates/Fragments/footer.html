@@ -1,20 +1,12 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="import" href="StyleSettings.html">
-    <link rel="stylesheet" type="text/css" href="../../static/css/footer.css">
-</head>
-<body>
-<footer>
-
-    <div class="container-fluid mt-5 mb-4 text-center text-md-left" style="background: linear-gradient(90deg,#6700F3,#7300E1)">
+<div th:fragment="footFrag">
+    <div class="container-fluid mt-5 mb-4 text-center text-md-left" id="allFooter">
         <div class="row mt-3">
 
             <!--First column-->
             <div class="col-md-3 col-lg-4 col-xl-3 mb-r blockFooter">
                 <h6 class="title font-bold" id="asd"><strong>RITRED</strong></h6>
                 <hr class="accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                <p >Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
                     amet, consectetur adipisicing elit.</p>
             </div>
             <!--/.First column-->
@@ -41,7 +33,7 @@
             <!--/.Third column-->
 
             <!--Fourth column-->
-            <div class="col-md-4 col-lg-3 col-xl-3 blockFooter" >
+            <div class="col-md-4 col-lg-3 col-xl-3 blockFooter">
                 <h6 class="title font-bold"><strong>CONTACTO</strong></h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p><i class="fa fa-home mr-3"></i>www.ritred.com</p>
@@ -49,14 +41,13 @@
             </div>
             <!--/.Fourth column-->
 
-<div class="container-fluid" style="background-color:#343a40;min-height: 50px;">
-  <div class="row"><div class="col text-center"> <a style="font-size: 20px;">
-      <span style="color: #868e96">© 2017 Copyright:</span><span style="color: white"> Ritred.com</span></a></div></div>
-</div>
+            <div class="container-fluid" style="background-color:#343a40;min-height: 50px;">
+                <div class="row">
+                    <div class="col text-center"><a style="font-size: 20px;">
+                        <span style="color: #868e96">© 2017 Copyright:</span><span
+                            style="color: white"> Ritred.com</span></a></div>
+                </div>
+            </div>
         </div>
     </div>
-</footer>
-
-</body>
-
-</html>
+</div>

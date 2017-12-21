@@ -1,4 +1,4 @@
-package com.ritred.ritred;
+package com.ritred;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

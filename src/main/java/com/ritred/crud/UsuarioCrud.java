@@ -2,6 +2,7 @@ package com.ritred.crud;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.ritred.dao.Relatos;
@@ -9,85 +10,104 @@ import com.ritred.dao.Usuario;
 
 public class UsuarioCrud extends MainCrud {
 
-	public UsuarioCrud() {
+    public UsuarioCrud() {
 
-	}
+    }
 
-	protected void createUsuario(Usuario us) {
+    public void createUsuario(Usuario us) {
+        setup();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+        session.save(us);
 
-		session.save(us);
+        session.getTransaction().commit();
+        session.close();
+        exit();
+    }
 
-		session.getTransaction().commit();
-		session.close();
+    protected Usuario readById(int pkUsuario) {
 
-	}
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-	protected Usuario readById(int pkUsuario) {
+        Usuario us = null;
+        us = session.get(Usuario.class, pkUsuario);
 
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+        session.getTransaction().commit();
+        session.close();
 
-		Usuario us = null;
-		us = session.get(Usuario.class, pkUsuario);
+        return us;
+    }
 
-		session.getTransaction().commit();
-		session.close();
+    public Usuario readByUsername(String username, String password) {
+        setup();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-		return us;
-	}
+        Query q = session.createQuery("from usuario as c where c.username =:username and c.contrasena =:contrasena");
+        q.setString("username", username);
+        q.setString("contrasena", password);
 
-	protected void addSeguidor(Usuario usuario, Usuario seguidor) {
+        List result = q.list();
+        Usuario us = (Usuario) result.get(0);
 
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+        session.getTransaction().commit();
+        session.close();
+        exit();
 
-		Usuario us = null;
-		Usuario antiguo = null;
+        return us;
+    }
 
-		antiguo = session.get(Usuario.class, usuario.getPkUsuario());
-		us = antiguo;
+    protected void addSeguidor(Usuario usuario, Usuario seguidor) {
 
-		us.getSeguidores().add(seguidor);
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-		session.getTransaction().commit();
-		session.close();
-		updateUsuario(us, antiguo);
+        Usuario us = null;
+        Usuario antiguo = null;
 
-	}
+        antiguo = session.get(Usuario.class, usuario.getPkUsuario());
+        us = antiguo;
 
-	protected void updateUsuario(Usuario antiguo, Usuario nuevo) {
+        us.getSeguidores().add(seguidor);
 
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+        session.getTransaction().commit();
+        session.close();
+        updateUsuario(us, antiguo);
 
-		antiguo = nuevo;
+    }
 
-		session.update(antiguo);
-		session.getTransaction().commit();
-		session.close();
+    protected void updateUsuario(Usuario antiguo, Usuario nuevo) {
 
-	}
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-	protected List<Relatos> getRelatosUsuario(Usuario usuario) {
+        antiguo = nuevo;
 
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
+        session.update(antiguo);
+        session.getTransaction().commit();
+        session.close();
 
-		Usuario usBD = this.readById(usuario.getPkUsuario());
-		List<Relatos> relatos = usBD.getRelatos();
+    }
 
-		session.getTransaction().commit();
-		session.close();
+    protected List<Relatos> getRelatosUsuario(Usuario usuario) {
 
-		return relatos;
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-	}
+        Usuario usBD = this.readById(usuario.getPkUsuario());
+        List<Relatos> relatos = usBD.getRelatos();
 
-	protected void delete(Usuario us) {
+        session.getTransaction().commit();
+        session.close();
 
-	}
+        return relatos;
+
+    }
+
+    protected void delete(Usuario us) {
+
+    }
 
 }

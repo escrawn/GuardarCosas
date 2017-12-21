@@ -1,31 +1,58 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.0.2/web-fonts-with-css/css/fontawesome-all.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
 <body>
-	<div class="login-form-1">
-		<form id="login-form" class="text-left">
-			<div class="login-form-main-message"></div>
-			<div class="main-login-form">
-				<div class="login-group">
-					<div class="form-group">
-						<label for="lg_username" class="sr-only">Username</label>
-						<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="username"/>
-					</div>
-					<div class="form-group">
-						<label for="lg_password" class="sr-only">Password</label>
-						<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="password"/>
-					</div>
-					<div class="form-group login-group-checkbox">
-						<input type="checkbox" id="lg_remember" name="lg_remember"/>
-						<label for="lg_remember">remember</label>
-					</div>
-				</div>
-				<button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
-			</div>
-			<div class="etc-login-form">
-				<p>forgot your password? <a href="#">click here</a></p>
-				<p>new user? <a href="#">create new account</a></p>
-			</div>
-		</form>
-	</div>
 
+
+<nav th:replace="Fragments/menu :: menuFrag"></nav>
+
+
+<div class="container" style="margin-top: 5%">
+    <h3 style="text-align: center;border: 2px solid black;border-radius: 50px;">FORMULARIO DE REGISTRO</h3>
+
+
+    <form action="#" th:action="@{/registro}" th:object="${usuario}" method="post">
+
+        <div class="form-group">
+
+
+            <br><label for="usuario">Nombre de usuario</label>
+            <br><input class="form-control" id="usuario" th:field="*{username}">
+            <br><label th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="alert alert-danger"></label>
+
+
+            <br><label for="nombre">Nombre</label>
+            <br><input class="form-control" id="nombre" th:field="*{nombre}">
+            <br><label th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="alert alert-danger">Error: </label>
+
+
+            <br><label for="contrasena">Contraseña</label>
+            <br><input class="form-control" id="contrasena" th:field="*{contrasena}">
+            <br><label th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}" class="alert alert-danger">Error: </label>
+
+
+            <br><label for="email">Email</label>
+            <br><input class="form-control" id="email" th:field="*{email}">
+            <br><label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger">Error: </label>
+
+            <br><label for="recEmail">Confirmar contraseña</label>
+            <br><input class="form-control" id="recEmail">
+
+            <br>
+            <div class="btnRegistro"><input type="submit" value="Aceptar" class="btn btn-success" align="center">
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div th:replace="Fragments/footer :: footFrag"></div>
 </body>
 </html>

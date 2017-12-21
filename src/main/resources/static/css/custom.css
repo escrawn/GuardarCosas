@@ -1,3 +1,6 @@
+/* GENERAL CONTENT */
+
+/* NOVEDADES */
 .novedad{
     border-style: solid;
     border-color: black;
@@ -24,6 +27,7 @@
     cursor:pointer;
 }
 
+/* MENU */
 .botonMenu{
     border-radius: 3px;
     border-style: none;
@@ -40,8 +44,38 @@
     color: white;
 }
 
+/* INDEX */
+
 .fotoPortada{
     background-image: url("/images/arboles.jpg");
     height: 100%;
     width: auto;
+}
+
+/* FOOTER */
+
+#allFooter{
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0!important;
+    padding-bottom: 0!important;
+
+    border-top: 2px solid black;
+}
+
+#allFooter a{
+    color: #23272b;
+}
+
+/* REGISTRO */
+
+.btnRegistro{
+    text-align: center;
+}
+
+.btnRegistro input{
+    width: 30%;
+
 }

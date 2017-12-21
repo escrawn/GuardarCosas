@@ -1,19 +1,46 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.0.2/web-fonts-with-css/css/fontawesome-all.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
 </head>
-
 <body>
-        <div th:if="${param.error}">
-            Invalid username or password.
+
+<nav th:replace="Fragments/menu :: menuFrag"></nav>
+
+<div class="container" style="margin-bottom: 20%;">
+    <div th:if="${mensaje} != null" th:text="${mensaje}" class="alert alert-success"></div>
+    <div th:if="${loginCorrecto} != null" th:text="${loginCorrecto}" class="alert alert-success"></div>
+
+
+
+        <h3 style="text-align: center;border:2px solid black;border-radius: 30px;margin-top: 10%;">INICIAR SESIÓN</h3>
+
+    <form action="#" th:action="@{/login}" th:object="${usLog}" method="post">
+        <div class="form-group">
+
+            <br><label for="username">Usuario</label>
+            <br><input class="form-control" id="username" th:field="*{username}">
+
+            <br><label for="contrasena">Contraseña</label>
+            <br><input class="form-control" id="contrasena" th:field="*{contrasena}">
+
+            <div style="text-align: center;">
+                <label for="recContr" style="font-size: 20px;">Recordar contraseña</label>
+                <input type="checkbox" id="recContr">
+            </div>
+
+            <div class="btnRegistro">
+                <br><input type="submit" value="Entrar" class="btn btn-success">
+            </div>
+
         </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-        </form>
-    </body>
-</html>
+    </form>
+</div>
+<div th:replace="Fragments/footer :: footFrag"></div>
+
+</body>

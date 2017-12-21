@@ -11,28 +11,29 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private AccessDeniedHandler accessDeniedHandler;
+    @Autowired
+    private AccessDeniedHandler accessDeniedHandler;
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/", "/index", "/registro","/css").permitAll()
-				.antMatchers("/admin").hasAnyRole("USUARIO").antMatchers("/user/*").hasAnyRole("ADMINISTRADOR")
-				.antMatchers("/user/**/relato/*").hasAnyRole("ADMINISTRADOR").anyRequest().authenticated().and()
-				.formLogin().loginPage("/login").permitAll().and().logout().permitAll().and().exceptionHandling()
-				.accessDeniedHandler(accessDeniedHandler);
-	}
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable().authorizeRequests()
+                .antMatchers("/", "/index", "/registro", "/admin", "/css", "/fontawesome-free-5.0.2/**", "/js", "/images", "/login").permitAll()
+                .antMatchers("/user/*").hasAnyRole("ADMINISTRADOR")
+                .antMatchers("/user/**/relato/*").hasAnyRole("ADMINISTRADOR").anyRequest().authenticated().and()
+                .formLogin().loginPage("/login").permitAll().and().logout().permitAll().and().exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler);
+    }
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("password").roles("ADMINISTRADOR").and()
-				.withUser("user1").password("password1").roles("USUARIO");
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("user").password("password").roles("ADMINISTRADOR").and()
+                .withUser("user1").password("password1").roles("USUARIO");
 
-	}
+    }
 
-	@Bean
-	public AccessDeniedHandler accessDeniedHandler() {
-		return accessDeniedHandler;
-	}
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() {
+        return accessDeniedHandler;
+    }
 
 }
