@@ -4,6 +4,9 @@ import com.ritred.crud.RelatosCrud;
 import com.ritred.crud.UsuarioCrud;
 import com.ritred.dao.Relatos;
 import com.ritred.dao.Usuario;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,27 +63,6 @@ public class MainController {
         return mav;
     }
 
-    @PostMapping(value = "/login")
-    public ModelAndView loginPost(@Valid @ModelAttribute("usLog") Usuario usuario,BindingResult bindingResult) {
-
-        if(bindingResult.hasErrors()){
-            return null;
-        }
-        ModelAndView mav = new ModelAndView("login");
-
-
-        System.out.println(usuario.getNombre()+"+++++++++++++++++++++++++++++++++++++");
-        System.out.println(usuario.getContrasena()+"--------------------------------------");
-
-        UsuarioCrud uc = new UsuarioCrud();
-        uc.readByUsername(usuario.getUsername(), usuario.getContrasena());
-
-        String log = "Correcto!"+usuario.getUsername();
-        mav.addObject("loginCorrecto",log);
-
-        return mav;
-    }
-
     @GetMapping(value = "/login")
     public ModelAndView login() {
         ModelAndView mav = new ModelAndView("login");
@@ -92,8 +74,16 @@ public class MainController {
 
 
     @GetMapping(value = "/admin")
-    public String admin() {
-        return "/admin";
+    public ModelAndView admin(Authentication auth) {
+        ModelAndView mav = new ModelAndView("admin");
+
+        for(GrantedAuthority authority : auth.getAuthorities()){
+            System.out.println(authority.getAuthority()+",");
+        }
+
+
+        return mav;
+
     }
 
     @GetMapping(value = "/user/{id}/")

@@ -7,7 +7,10 @@ import org.hibernate.Session;
 
 import com.ritred.dao.Relatos;
 import com.ritred.dao.Usuario;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UsuarioCrud extends MainCrud {
 
     public UsuarioCrud() {
@@ -40,14 +43,14 @@ public class UsuarioCrud extends MainCrud {
         return us;
     }
 
-    public Usuario readByUsername(String username, String password) {
+    public Usuario readByUsername(String username) {
         setup();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Query q = session.createQuery("from usuario as c where c.username =:username and c.contrasena =:contrasena");
+        Query q = session.createQuery("from Usuario as c where c.username = :username");
         q.setString("username", username);
-        q.setString("contrasena", password);
+
 
         List result = q.list();
         Usuario us = (Usuario) result.get(0);
