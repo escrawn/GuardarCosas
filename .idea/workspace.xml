@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc6a7d1b-20b7-4ebe-8873-435f7f4e3082" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_dbcp_commons_dbcp_1_4.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_pool_commons_pool_1_6.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_9_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_12_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ritred/ritred/AuthenticationService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ritred/ritred/WebConfig.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/error.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ritred_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/ritred_war_exploded.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/ritred.iml" afterPath="$PROJECT_DIR$/ritred.iml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ritred/crud/UsuarioCrud.java" afterPath="$PROJECT_DIR$/src/main/java/com/ritred/crud/UsuarioCrud.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ritred/dao/Usuario.java" afterPath="$PROJECT_DIR$/src/main/java/com/ritred/dao/Usuario.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ritred/ritred/AuthenticationService.java" afterPath="$PROJECT_DIR$/src/main/java/com/ritred/ritred/AuthenticationService.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ritred/ritred/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/ritred/ritred/MainController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ritred/ritred/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/ritred/ritred/SecurityConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,21 +19,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AuthenticationService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AuthenticationService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/ritred/AuthenticationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="169">
+              <caret line="33" column="63" lean-forward="true" selection-start-line="33" selection-start-column="63" selection-end-line="33" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDetails.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.2.3.RELEASE/spring-security-core-4.2.3.RELEASE-sources.jar!/org/springframework/security/core/userdetails/UserDetails.java">
+      <file leaf-file-name="Usuario.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/dao/Usuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1080">
-              <caret line="43" column="17" lean-forward="false" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+            <state relative-caret-position="184">
+              <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -56,12 +42,12 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/ritred/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+            <state relative-caret-position="438">
+              <caret line="36" column="38" lean-forward="false" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2757#2758#0" expanded="true" />
-                <element signature="e#2782#2783#0" expanded="true" />
+                <element signature="e#2518#2519#0" expanded="true" />
+                <element signature="e#2543#2544#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,7 +138,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/Fragments/footer.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/Fragments/menu.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ritred/dao/Usuario.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/registro.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ritred/RitredApplication.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin.html" />
@@ -160,11 +145,12 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/error.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ritred/ritred/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ritred/ritred/WebConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ritred/ritred/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ritred/crud/UsuarioCrud.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ritred/ritred/AuthenticationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ritred/dao/Usuario.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ritred/ritred/MainController.java" />
       </list>
     </option>
   </component>
@@ -509,12 +495,12 @@
       <workItem from="1513688299899" duration="1765000" />
       <workItem from="1513763662824" duration="12506000" />
       <workItem from="1513841349863" duration="19707000" />
-      <workItem from="1513927316046" duration="18621000" />
+      <workItem from="1513927316046" duration="19578000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82501000" />
+    <option name="totallyTimeSpent" value="83458000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -637,14 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3450">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/dao/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="39" column="39" lean-forward="true" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -929,6 +907,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/crud/UsuarioCrud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/ritred/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -938,6 +924,14 @@
             <element signature="e#2200#2201#0" expanded="true" />
             <element signature="e#2242#2243#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/ritred/AuthenticationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="33" column="63" lean-forward="true" selection-start-line="33" selection-start-column="63" selection-end-line="33" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -953,21 +947,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/ritred/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state relative-caret-position="438">
+          <caret line="36" column="38" lean-forward="false" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2757#2758#0" expanded="true" />
-            <element signature="e#2782#2783#0" expanded="true" />
+            <element signature="e#2518#2519#0" expanded="true" />
+            <element signature="e#2543#2544#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/crud/UsuarioCrud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,10 +965,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/ritred/AuthenticationService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ritred/dao/Usuario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="184">
+          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
           <folding />
         </state>
       </provider>

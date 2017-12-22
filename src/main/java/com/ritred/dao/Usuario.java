@@ -2,6 +2,7 @@ package com.ritred.dao;
 
 import org.hibernate.validator.constraints.Email;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -56,7 +57,10 @@ public class Usuario {
 
     private List<Relatos> relatosConEnganchados;
 
-    public Usuario() {
+    public Usuario(String username, String contrasena, ArrayList roles) {
+
+    }
+    public Usuario(){
 
     }
 
