@@ -39,10 +39,15 @@
     color: white;
 
 }
+#mainMenu{
+padding: .0rem .0rem!important;
+    margin: 0px!important;
+}
 
 .icono{
     color: white;
 }
+
 
 /* INDEX */
 

@@ -12,15 +12,12 @@
 
 <nav th:replace="Fragments/menu :: menuFrag"></nav>
 
-<div class="container" style="margin-bottom: 20%;">
-    <div th:if="${mensaje} != null" th:text="${mensaje}" class="alert alert-success"></div>
-    <div th:if="${loginCorrecto} != null" th:text="${loginCorrecto}" class="alert alert-success"></div>
 
 
-
+<div class="container" style="width: 80%;">
         <h3 style="text-align: center;border:2px solid black;border-radius: 30px;margin-top: 10%;">INICIAR SESIÓN</h3>
 
-    <form action="#" th:action="@{/login}" th:object="${usLog}" method="post">
+    <form action="#" th:action="@{/login}" th:object="${usuario}" method="post">
         <div class="form-group">
 
             <br><label for="username">Usuario</label>

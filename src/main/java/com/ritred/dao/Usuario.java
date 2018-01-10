@@ -1,6 +1,7 @@
 package com.ritred.dao;
 
 import org.hibernate.validator.constraints.Email;
+import org.springframework.context.annotation.Scope;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
+@Scope("session")
 @Table(name = "usuario")
 public class Usuario {
 
@@ -57,9 +59,6 @@ public class Usuario {
 
     private List<Relatos> relatosConEnganchados;
 
-    public Usuario(String username, String contrasena, ArrayList roles) {
-
-    }
     public Usuario(){
 
     }

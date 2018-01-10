@@ -109,6 +109,7 @@ public class UsuarioCrud extends MainCrud {
 
     }
 
+
     protected void delete(Usuario us) {
 
     }
