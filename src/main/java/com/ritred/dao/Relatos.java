@@ -91,10 +91,6 @@ public class Relatos implements Comparable<Relatos>{
 		this.enganchados = enganchados;
 	}
 
-	public int getPkRelato() {
-		return pkRelatos;
-	}
-
 	public void setPkRelato(int pkRelato) {
 		this.pkRelatos = pkRelato;
 	}
@@ -105,10 +101,6 @@ public class Relatos implements Comparable<Relatos>{
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}
-
-	public int getNumPag() {
-		return nPaginas;
 	}
 
 	public void setNumPag(int numPag) {

@@ -25,10 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/index", "/registro", "/login").permitAll()
-                .antMatchers("/admin").hasAuthority("Administrador").anyRequest().authenticated()
-                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).maximumSessions(2)
+                .antMatchers("/", "/index", "/registro", "/login","/usuario/*","/test").permitAll()
+                .antMatchers("/admin").hasAuthority("Administrador").anyRequest().authenticated();
+
+        /**
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).maximumSessions(2)
                 .expiredUrl("/login").and().invalidSessionUrl("/login");
+         **/
     }
 
 
@@ -38,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/fontawesome-free-5.0.2/**");
     }
+
 
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {

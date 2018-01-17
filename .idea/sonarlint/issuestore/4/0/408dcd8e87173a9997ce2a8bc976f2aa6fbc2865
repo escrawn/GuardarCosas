@@ -1,0 +1,3 @@
+
+usquid:S1210"YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.(¼¦é˜8îÎè›,
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(«£³¾øÿÿÿÿ8îÎè›,

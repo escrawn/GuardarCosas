@@ -1,0 +1,122 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.0.2/web-fonts-with-css/css/fontawesome-all.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <title>Test</title>
+</head>
+<body>
+
+
+<nav th:replace="Fragments/menu :: menuFrag"></nav>
+
+<div class="container" style="width: 90%;">
+
+    <!-- Ficha de información -->
+    <div class="row">
+        <h3 style="margin-bottom: 5%;">DETALLES DE (usuario)</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-2"><img src="/images/arboles.jpg" width="150px" height="150px" style="border-radius: 5%;">
+        </div>
+        <div class="col-lg-3">
+            <p><b>Nombre:</b> Ejemplo
+                <br><b>Correo:</b> ejemplo@hotmail.com
+                <br><b>Seguidores:</b> 5
+                <br><b>Siguiendo: </b> 5
+                <br>
+                <br>
+                <button class="btn btn-info">Modificar</button>
+            </p>
+        </div>
+
+        <div class="col-lg-4">
+            <span><b>Descripción</b></span>
+            <div style="max-height:15%;overflow-y: scroll;">
+                <br>Este es un ejemplo de descripcion.Este es un ejemplo de descripcion.Este es un ejemplo de
+                descripcion.Este es un ejemplo de descripcion.Este es un ejemplo de descripcion.Este es un ejemplo de
+                descripcion.Este es un ejemplo de descripcion.Este es un ejemplo de descripcion.Este es un ejemplo de
+                descripcion.Este es un ejemplo de descripcion.Este es un ejemplo de descripcion.
+
+            </div>
+        </div>
+
+        <div class="col-lg-2">
+            <b>MEDALLAS</b>
+            <p>No tiene</p>
+        </div>
+
+    </div>
+</div>
+<!-- Relatos escritos por el usuario -->
+<div class="container" style="width: 90%;margin-top: 4%;margin-bottom: 4%;">
+    <h3 style="border-bottom: 2px solid black">Relatos escritos por (usuario) <a class="btn btn-primary"
+                                                                                 data-toggle="collapse"
+                                                                                 href="#collapseExample"
+                                                                                 aria-expanded="false"
+                                                                                 aria-controls="collapseExample">Ver
+    </a></h3>
+    <div class="collapse" id="collapseExample">
+        <div class="row">
+            <div class="col-lg-3" th:each="relato : ${relatosU}">
+                <div class="container novedad" style="float:left;margin-right: 30px;margin-top: 8%;">
+                    <p>
+                    <div class="titulo"><b th:text="${relato.titulo}"></b></div>
+                    <br><i class="fa fa-user-circle" aria-hidden="true"></i> <b>Autor:</b> <span>Ejemplo</span>
+                    <br><i class="fa fa-tag" aria-hidden="true"></i> <b>Género: </b><span>Ejemplo</span>
+                    <br><i class="fa fa-rocket" aria-hidden="true"></i> <b>Sinopsis: </b><span>Esta obra presenta  la vida "gris" de una
+    familia de condición muy modesta, la familia vive en un entresuelo de los suburbios de una ciudad cualquiera.Esta obra presenta
+    la vida "gris" de una familia de condición muy modesta, la familia vive.
+</span>
+                    <br><b>Puntuacion:</b><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
+                                                                                          aria-hidden="true"></i><i
+                        class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container" style="width: 90%;margin-bottom: 4%;">
+
+
+    <h3 style="border-bottom: 2px solid black">Relatos que sigue (usuario) <a class="btn btn-primary"
+                                                                              data-toggle="collapse"
+                                                                              href="#collapse2"
+                                                                              aria-expanded="false"
+                                                                              aria-controls="collapse2"> Ver
+    </a></h3>
+
+    <div class="collapse" id="collapse2">
+        <div class="row">
+            <div class="col-lg-3" th:each="relatoEn : ${relatosEng}">
+                <div class="container novedad" style="float:left;margin-right: 30px;margin-top: 8%;">
+                    <p>
+                    <div class="titulo" th:text="${relatoEn.titulo}"><b>Ejemplo</b></div>
+                    <br><i class="fa fa-user-circle" aria-hidden="true"></i> <b>Autor:</b> <span>Ejemplo</span>
+                    <br><i class="fa fa-tag" aria-hidden="true"></i> <b>Género: </b><span>Ejemplo</span>
+                    <br><i class="fa fa-rocket" aria-hidden="true"></i> <b>Sinopsis: </b><span>Esta obra presenta  la vida "gris" de una
+    familia de condición muy modesta, la familia vive en un entresuelo de los suburbios de una ciudad cualquiera.Esta obra presenta
+    la vida "gris" de una familia de condición muy modesta, la familia vive.
+</span>
+                    <br><b>Puntuacion:</b><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star"
+                                                                                          aria-hidden="true"></i><i
+                        class="fa fa-star" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div th:replace="Fragments/footer :: footFrag"></div>
+</body>
+</html>

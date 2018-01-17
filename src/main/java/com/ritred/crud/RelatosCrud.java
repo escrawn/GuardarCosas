@@ -1,11 +1,14 @@
 package com.ritred.crud;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import com.ritred.dao.Capitulos;
@@ -13,7 +16,7 @@ import com.ritred.dao.Relatos;
 import com.ritred.dao.Usuario;
 
 @Component
-public class RelatosCrud extends MainCrud{
+public class RelatosCrud extends MainCrud {
 
     public RelatosCrud() {
 
@@ -51,7 +54,7 @@ public class RelatosCrud extends MainCrud{
 
     protected void addEnganchado(Relatos r, Usuario enganchado) {
         this.setup();
-        Relatos rsAnt = getRelatoById(r.getPkRelato());
+        Relatos rsAnt = getRelatoById(r.getPkRelatos());
         rsAnt.getEnganchados().add(enganchado);
 
         updateRelato(rsAnt, rsAnt);
@@ -76,7 +79,7 @@ public class RelatosCrud extends MainCrud{
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Relatos relatoBD = getRelatoById(relato.getPkRelato());
+        Relatos relatoBD = getRelatoById(relato.getPkRelatos());
         Relatos aux = null;
         aux = relatoBD;
 
@@ -91,7 +94,7 @@ public class RelatosCrud extends MainCrud{
     }
 
     protected List<Relatos> getRelatos() {
-        this.setup();
+        setup();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -113,6 +116,25 @@ public class RelatosCrud extends MainCrud{
         this.exit();
         return novedades;
     }
+
+    public List<Relatos> getRelatosUsuario(int id){
+
+        setup();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query q = session.createQuery("from Relatos where Usuario_pkUsuario = :id");
+        q.setInteger("id",id);
+
+        List<Relatos> relatos = q.list();
+        session.getTransaction().commit();
+        session.close();
+        exit();
+
+        return relatos;
+    }
+
+
 
 
 }

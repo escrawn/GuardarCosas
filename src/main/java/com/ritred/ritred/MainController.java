@@ -4,15 +4,15 @@ import com.ritred.crud.RelatosCrud;
 import com.ritred.crud.UsuarioCrud;
 import com.ritred.dao.Relatos;
 import com.ritred.dao.Usuario;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -41,7 +41,7 @@ public class MainController {
     @PostMapping(value = "/registro")
     public ModelAndView registroPost(@ModelAttribute("usuario") Usuario usuario, BindingResult bindingResult) {
 
-        System.out.println("Llamado post registro");
+        System.err.println("Llamado post registro");
         if (bindingResult.hasErrors()) {
             return new ModelAndView("registro");
         }
@@ -69,7 +69,7 @@ public class MainController {
     }
 
     @PostMapping(value = "/login")
-    public ModelAndView postLogin(@ModelAttribute("usuario") Usuario usuario, BindingResult bindingResult) {
+    public ModelAndView postLogin(@ModelAttribute("usuario") Usuario usuario, BindingResult bindingResult, HttpSession httpSession) {
 
         System.out.println("Llamado post login");
         boolean correcto = false;
@@ -78,7 +78,7 @@ public class MainController {
             return new ModelAndView("login");
         }
 
-        ModelAndView mav = new ModelAndView("registro");
+        ModelAndView mav = new ModelAndView("UsuarioDetalles");
         UsuarioCrud uc = new UsuarioCrud();
 
         Usuario us = null;
@@ -101,8 +101,11 @@ public class MainController {
             return new ModelAndView("login");
         }
 
-        //Si todo va bien redireccionamos a registro
-        if (correcto == true) {
+        //Si t0do va bien redireccionamos a registro
+        if (correcto) {
+            httpSession.setAttribute("TipoUsuario", us.getTipoUsuario());
+            httpSession.setAttribute("Id", us.getPkUsuario());
+            httpSession.setAttribute("Username", us.getUsername());
             System.out.println("Funciona!!");
             return mav;
         }
@@ -110,18 +113,57 @@ public class MainController {
         return new ModelAndView("login");
     }
 
-    @GetMapping(value = "/admin")
-    public ModelAndView admin(Authentication auth) {
-        ModelAndView mav = new ModelAndView("admin");
+    @GetMapping(value = "usuario/{usernameURL}")
+    public ModelAndView detallesUsuario(HttpSession httpSession, @PathVariable(value = "usernameURL") String usernameURL) {
+        ModelAndView mav = new ModelAndView("UsuarioDetalles");
 
-        for (GrantedAuthority authority : auth.getAuthorities()) {
-            System.out.println(authority.getAuthority() + ",");
+        boolean mostrar = false;
+        String tu = (String) httpSession.getAttribute("TipoUsuario");
+        String us = (String) httpSession.getAttribute("Username");
+        int id = (int) httpSession.getAttribute("Id");
+
+        UsuarioCrud uc = new UsuarioCrud();
+
+        Usuario usUrl = null;
+
+        try {
+            usUrl = uc.readByUsername(usernameURL);
+        } catch (Exception e) {
+            usUrl.setPkUsuario(-1);
         }
 
 
-        return mav;
+        System.out.println(tu + "-----------------------------------");
+        System.out.println(us + "+++++++++++++++++++++++++++++++++++");
 
+        if (usUrl.getPkUsuario() == id) {
+            mostrar = true;
+        } else if (usUrl.getPkUsuario() == -1) {
+            mostrar = false;
+        }
+        mav.getModelMap().addAttribute("tUsuario", tu);
+        mav.getModelMap().addAttribute("user", us);
+        mav.getModelMap().addAttribute("mostrar", mostrar);
+
+        return mav;
     }
 
+    @GetMapping(value = "/test")
+    public ModelAndView pruebasHTML() {
+        ModelAndView mav = new ModelAndView("test");
+
+
+        RelatosCrud rc = new RelatosCrud();
+        List<Relatos> relatos = rc.getRelatosUsuario(7);
+
+        UsuarioCrud uc = new UsuarioCrud();
+        List<Relatos> relatosEng = uc.getEnganchadosUsuario(8);
+
+
+        mav.addObject("relatosU", relatos);
+        mav.addObject("relatosEng",relatosEng);
+
+        return mav;
+    }
 
 }

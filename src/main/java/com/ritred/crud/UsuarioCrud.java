@@ -29,8 +29,9 @@ public class UsuarioCrud extends MainCrud {
         exit();
     }
 
-    protected Usuario readById(int pkUsuario) {
+    public Usuario readById(int pkUsuario) {
 
+        setup();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -39,6 +40,7 @@ public class UsuarioCrud extends MainCrud {
 
         session.getTransaction().commit();
         session.close();
+        exit();
 
         return us;
     }
@@ -94,24 +96,41 @@ public class UsuarioCrud extends MainCrud {
 
     }
 
-    protected List<Relatos> getRelatosUsuario(Usuario usuario) {
+    public List<Relatos> getRelatosUsuario(int pkUsuario) {
+
+        setup();
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Usuario usBD = this.readById(usuario.getPkUsuario());
-        List<Relatos> relatos = usBD.getRelatos();
+        Usuario us = session.get(Usuario.class, pkUsuario);
+        List<Relatos> relatos = us.getRelatos();
 
         session.getTransaction().commit();
         session.close();
 
+        exit();
         return relatos;
 
     }
 
+    public List<Relatos> getEnganchadosUsuario(int pk) {
 
-    protected void delete(Usuario us) {
+        setup();
 
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+
+        Usuario us = session.get(Usuario.class, pk);
+
+        List<Relatos> relatosConEnganchados = us.getRelatosConEnganchados();
+
+
+        session.getTransaction().commit();
+        session.close();
+
+        exit();
+        return relatosConEnganchados;
     }
-
 }
