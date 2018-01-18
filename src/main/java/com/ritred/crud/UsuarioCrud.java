@@ -7,7 +7,6 @@ import org.hibernate.Session;
 
 import com.ritred.dao.Relatos;
 import com.ritred.dao.Usuario;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -118,14 +117,13 @@ public class UsuarioCrud extends MainCrud {
 
         setup();
 
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-
-        Usuario us = session.get(Usuario.class, pk);
+        Usuario us =  session.get(Usuario.class, pk);
 
         List<Relatos> relatosConEnganchados = us.getRelatosConEnganchados();
-
 
         session.getTransaction().commit();
         session.close();

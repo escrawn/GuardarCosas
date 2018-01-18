@@ -1,6 +1,4 @@
 
-fsquid:S2095"EUse try-with-resources or close this "Session" in a "finally" clause.(´Ï‚‘ùÿÿÿÿ8îÎè›,
-esquid:S1226"DIntroduce a new variable instead of reusing the parameter "antiguo".(Õ•‘Öûÿÿÿÿ8îÎè›,
-¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Û¼³âıÿÿÿÿ8îÎè›,
-jsquid:UselessImportCheck"ARemove this unused import 'org.hibernate.criterion.Restrictions'.(µ¾‘8îÎè›,
-Ysquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8îÎè›,
+_squid:S2095"EUse try-with-resources or close this "Session" in a "finally" clause.(´Ï‚‘ùÿÿÿÿ
+^squid:S1226"DIntroduce a new variable instead of reusing the parameter "antiguo".(Õ•‘Öûÿÿÿÿ
+›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Û¼³âıÿÿÿÿ

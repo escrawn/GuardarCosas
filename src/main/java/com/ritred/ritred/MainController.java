@@ -157,7 +157,7 @@ public class MainController {
         List<Relatos> relatos = rc.getRelatosUsuario(7);
 
         UsuarioCrud uc = new UsuarioCrud();
-        List<Relatos> relatosEng = uc.getEnganchadosUsuario(8);
+        List<Relatos> relatosEng = uc.getEnganchadosUsuario(7);
 
 
         mav.addObject("relatosU", relatos);

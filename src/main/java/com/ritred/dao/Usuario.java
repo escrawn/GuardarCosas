@@ -3,7 +3,6 @@ package com.ritred.dao;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.context.annotation.Scope;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
