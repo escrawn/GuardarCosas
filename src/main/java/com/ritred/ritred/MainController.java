@@ -115,14 +115,29 @@ public class MainController {
 
     @GetMapping(value = "usuario/{usernameURL}")
     public ModelAndView detallesUsuario(HttpSession httpSession, @PathVariable(value = "usernameURL") String usernameURL) {
-        ModelAndView mav = new ModelAndView("UsuarioDetalles");
 
+        ModelAndView mav = new ModelAndView("UsuarioDetalles");
         boolean mostrar = false;
+
+        UsuarioCrud uc = new UsuarioCrud();
+        Usuario busq = uc.readByUsername(usernameURL);
+
+
+        List<Relatos> relatosEng = uc.getEnganchadosUsuario(busq.getPkUsuario());
+
+
+        RelatosCrud rc = new RelatosCrud();
+        List<Relatos> relatos = rc.getRelatosUsuario(busq.getPkUsuario());
+
+        mav.addObject("relatosU", relatos);
+        mav.addObject("relatosEng",relatosEng);
+
+
         String tu = (String) httpSession.getAttribute("TipoUsuario");
         String us = (String) httpSession.getAttribute("Username");
         int id = (int) httpSession.getAttribute("Id");
 
-        UsuarioCrud uc = new UsuarioCrud();
+
         Usuario usUrl = new Usuario();
 
         try {
@@ -137,25 +152,6 @@ public class MainController {
         mav.getModelMap().addAttribute("tUsuario", tu);
         mav.getModelMap().addAttribute("user", us);
         mav.getModelMap().addAttribute("mostrar", mostrar);
-
-        return mav;
-    }
-
-    @GetMapping(value = "/test")
-    public ModelAndView pruebasHTML() {
-        ModelAndView mav = new ModelAndView("test");
-
-
-
-        UsuarioCrud uc = new UsuarioCrud();
-        List<Relatos> relatosEng = uc.getEnganchadosUsuario(7);
-
-
-        RelatosCrud rc = new RelatosCrud();
-        List<Relatos> relatos = rc.getRelatosUsuario(7);
-
-        mav.addObject("relatosU", relatos);
-        mav.addObject("relatosEng",relatosEng);
 
         return mav;
     }

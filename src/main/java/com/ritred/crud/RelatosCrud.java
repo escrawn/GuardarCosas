@@ -78,8 +78,8 @@ public class RelatosCrud extends MainCrud {
         session.beginTransaction();
 
         Relatos relatoBD = getRelatoById(relato.getPkRelatos());
-        Relatos aux = null;
-        aux = relatoBD;
+        Relatos aux = relatoBD;
+
 
         List<Capitulos> capitulos = relatoBD.getCapitulos();
         capitulos.add(capitulo);
