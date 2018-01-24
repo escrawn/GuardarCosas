@@ -96,7 +96,7 @@ public class MainController {
         }
 
         //Si no existe ningun usuario devolvemos al login
-        if (us == null || !correcto) {
+        if (!correcto) {
             System.out.println("No funciona :(");
             return new ModelAndView("login");
         }
@@ -123,8 +123,7 @@ public class MainController {
         int id = (int) httpSession.getAttribute("Id");
 
         UsuarioCrud uc = new UsuarioCrud();
-
-        Usuario usUrl = null;
+        Usuario usUrl = new Usuario();
 
         try {
             usUrl = uc.readByUsername(usernameURL);
@@ -132,14 +131,8 @@ public class MainController {
             usUrl.setPkUsuario(-1);
         }
 
-
-        System.out.println(tu + "-----------------------------------");
-        System.out.println(us + "+++++++++++++++++++++++++++++++++++");
-
         if (usUrl.getPkUsuario() == id) {
             mostrar = true;
-        } else if (usUrl.getPkUsuario() == -1) {
-            mostrar = false;
         }
         mav.getModelMap().addAttribute("tUsuario", tu);
         mav.getModelMap().addAttribute("user", us);
@@ -153,12 +146,13 @@ public class MainController {
         ModelAndView mav = new ModelAndView("test");
 
 
-        RelatosCrud rc = new RelatosCrud();
-        List<Relatos> relatos = rc.getRelatosUsuario(7);
 
         UsuarioCrud uc = new UsuarioCrud();
         List<Relatos> relatosEng = uc.getEnganchadosUsuario(7);
 
+
+        RelatosCrud rc = new RelatosCrud();
+        List<Relatos> relatos = rc.getRelatosUsuario(7);
 
         mav.addObject("relatosU", relatos);
         mav.addObject("relatosEng",relatosEng);

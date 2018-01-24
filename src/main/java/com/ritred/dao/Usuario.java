@@ -5,17 +5,7 @@ import org.springframework.context.annotation.Scope;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,6 +14,8 @@ import javax.validation.constraints.Size;
 @Table(name = "usuario")
 public class Usuario {
 
+    @Column
+    @Id
     private int pkUsuario;
 
     @NotNull(message = "Campo obligatorio")
@@ -62,7 +54,11 @@ public class Usuario {
 
     }
 
-    @ManyToMany(mappedBy = "enganchados")
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "Relatos_has_enganchados", joinColumns = {
+            @JoinColumn(name = "usuario_pkEnganchado") }, inverseJoinColumns = {
+            @JoinColumn(name = "Relatos_pkRelatos") })
     public List<Relatos> getRelatosConEnganchados() {
         return relatosConEnganchados;
     }

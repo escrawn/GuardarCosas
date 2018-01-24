@@ -1,23 +1,0 @@
-
-csquid:S1192"IDefine a constant instead of duplicating this literal "registro" 3 times.(à²àûÿÿÿÿ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(‹êÙøÿÿÿÿ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(İÿ°ñüÿÿÿÿ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(üğ¬
-[squid:S1192"FDefine a constant instead of duplicating this literal "login" 5 times.(ßˆ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(„ Ö¦şÿÿÿÿ
-Rsquid:S2589"8Remove this expression which always evaluates to "false"(ßªéıÿÿÿÿ
-squid:S4165"eRemove this useless assignment; "mostrar" already holds the assigned value along all execution paths.(¸¢ûËıÿÿÿÿ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(òÊšŞ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(«åÇÅ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(Ö³÷úÿÿÿÿ
-]squid:S2259"CA "NullPointerException" could be thrown; "usUrl" is nullable here.(ª«³òúÿÿÿÿ
-Lsquid:S2589"7Remove this expression which always evaluates to "true"(Òÿ¨
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÀıÇ†

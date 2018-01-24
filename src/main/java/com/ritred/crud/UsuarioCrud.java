@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsuarioCrud extends MainCrud {
 
+
     public UsuarioCrud() {
 
     }
@@ -115,20 +116,19 @@ public class UsuarioCrud extends MainCrud {
 
     public List<Relatos> getEnganchadosUsuario(int pk) {
 
+
         setup();
-
-
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Usuario us =  session.get(Usuario.class, pk);
-
-        List<Relatos> relatosConEnganchados = us.getRelatosConEnganchados();
+        Usuario us = session.get(Usuario.class, pk);
+       List<Relatos> relatosConEnganchados = us.getRelatosConEnganchados();
 
         session.getTransaction().commit();
         session.close();
 
         exit();
+
         return relatosConEnganchados;
     }
 }

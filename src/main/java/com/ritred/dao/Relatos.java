@@ -45,10 +45,7 @@ public class Relatos implements Comparable<Relatos>{
 	@JoinColumn(name = "Usuario_pkUsuario")
 	private Usuario usuario;
 
-	@JoinTable(name = "relatos_has_enganchados", joinColumns = {
-			@JoinColumn(name = "Relatos_pkRelatos", referencedColumnName = "pkRelatos", nullable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "usuario_pkEnganchado", referencedColumnName = "pkUsuario", nullable = false) })
-	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "relatosConEnganchados")
 	private List<Usuario> enganchados;
 
 	@OneToMany(mappedBy = "relato", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)

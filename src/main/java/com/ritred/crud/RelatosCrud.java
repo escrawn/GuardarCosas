@@ -96,8 +96,8 @@ public class RelatosCrud extends MainCrud {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Criteria criteria = session.createCriteria(Relatos.class);
-        List relatos = criteria.list();
+        Query q = session.createQuery("from Relatos");
+        List<Relatos> relatos = q.list();
 
         session.getTransaction().commit();
         session.close();
@@ -107,8 +107,15 @@ public class RelatosCrud extends MainCrud {
     }
 
     public List<Relatos> getNovedadesRelatos() {
-        this.setup();
-        List<Relatos> novedades = getRelatos();
+
+        //List<Relatos> novedades = getRelatos();
+
+        setup();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query q = session.createQuery("from Relatos");
+        List<Relatos> novedades = q.list();
         Collections.sort(novedades);
 
         this.exit();
