@@ -133,6 +133,7 @@ public class MainController {
         mav.addObject("relatosEng",relatosEng);
 
 
+        /*
         String tu = (String) httpSession.getAttribute("TipoUsuario");
         String us = (String) httpSession.getAttribute("Username");
         int id = (int) httpSession.getAttribute("Id");
@@ -152,7 +153,7 @@ public class MainController {
         mav.getModelMap().addAttribute("tUsuario", tu);
         mav.getModelMap().addAttribute("user", us);
         mav.getModelMap().addAttribute("mostrar", mostrar);
-
+*/
         return mav;
     }
 
