@@ -114,7 +114,7 @@ public class MainController {
     }
 
     @GetMapping(value = "usuario/{usernameURL}")
-    public ModelAndView detallesUsuario(HttpSession httpSession, @PathVariable(value = "usernameURL") String usernameURL) {
+    public ModelAndView detallesUsuario(HttpSession httpSession, @PathVariable(value = "usernameURL") String usernameURL,@ModelAttribute("usuario") Usuario usuario) {
 
         ModelAndView mav = new ModelAndView("UsuarioDetalles");
         boolean mostrar = false;
@@ -133,7 +133,7 @@ public class MainController {
         mav.addObject("relatosEng",relatosEng);
 
 
-        /*
+
         String tu = (String) httpSession.getAttribute("TipoUsuario");
         String us = (String) httpSession.getAttribute("Username");
         int id = (int) httpSession.getAttribute("Id");
@@ -153,7 +153,7 @@ public class MainController {
         mav.getModelMap().addAttribute("tUsuario", tu);
         mav.getModelMap().addAttribute("user", us);
         mav.getModelMap().addAttribute("mostrar", mostrar);
-*/
+
         return mav;
     }
 
